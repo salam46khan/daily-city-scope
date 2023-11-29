@@ -1,8 +1,9 @@
+import NewsSection from "./NewsSection";
 
 const Home = () => {
     return (
         <div>
-            <p>home page</p>
+            <NewsSection></NewsSection>
         </div>
     );
 };

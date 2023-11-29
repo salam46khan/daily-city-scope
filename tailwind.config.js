@@ -5,7 +5,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        logoTitle :[ 'Berkshire Swash', 'serif']
+      }
+    },
   },
   plugins: [require("daisyui")],
 }
