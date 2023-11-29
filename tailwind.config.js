@@ -7,7 +7,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        logoTitle :[ 'Berkshire Swash', 'serif']
+        logoTitle :[ 'Berkshire Swash', 'serif'],
+        newsTitle :['Playfair Display', 'serif']
       }
     },
   },

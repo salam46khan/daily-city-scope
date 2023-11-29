@@ -1,9 +1,11 @@
+import Banner from "../../Components/Banner";
 import NewsSection from "./NewsSection";
 
 const Home = () => {
     return (
         <div>
             <NewsSection></NewsSection>
+           
         </div>
     );
 };

@@ -1,5 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap'); */
 
+@import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Playfair+Display:wght@500&display=swap');
 
 
 @tailwind base;

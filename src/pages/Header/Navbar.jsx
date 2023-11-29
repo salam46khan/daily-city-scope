@@ -56,7 +56,7 @@ const Navbar = () => {
 
 
                 </div>
-                <div className={`${scroll ? 'fixed bg-white top-0 left-0 ' : ''} w-full`}>
+                <div className={`${scroll ? 'fixed bg-white top-0 left-0 ' : ''} w-full z-50`}>
                     <div className={`navbar container mx-auto flex justify-between`}>
                         <div className="md:navbar-start">
                             <div className="dropdown">
@@ -67,7 +67,7 @@ const Navbar = () => {
                                     {navlinks}
                                 </ul>
                             </div>
-                            <Link className='font-logoTitle font-bold text-2xl' to={'/'}>Daily <span>City</span>Scope</Link>
+                            <Link className='font-logoTitle font-bold md:text-2xl text-[18px]' to={'/'}>Daily <span>City</span>Scope</Link>
                         </div>
                         <div className="navbar-center hidden lg:flex">
                             <ul className="menu menu-horizontal px-1 text-lg">
