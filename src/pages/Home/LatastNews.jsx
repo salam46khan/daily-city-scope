@@ -3,6 +3,7 @@ import useNews from "../../hook/useNews";
 
 const LatastNews = () => {
     const [news] = useNews()
+    const latest = news.slice(0,6);
     return (
         <div className="py-5">
             <div className="divider divider-start">

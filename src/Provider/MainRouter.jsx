@@ -7,11 +7,13 @@ import SignUp from "../pages/LogIn/SignUp";
 import Profile from "../pages/Profile/Profile";
 import DetailsNews from "../Shared/DetailsNews";
 import PrivateRouter from "./PrivateRouter";
+import ErrorPage from "../pages/ErrorPage";
 
 const MainRouter = createBrowserRouter([
     {
         path: '/',
         element: <Root></Root>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/',
@@ -35,7 +37,8 @@ const MainRouter = createBrowserRouter([
             },
             {
                 path: '/news/:id',
-                element: <PrivateRouter><DetailsNews></DetailsNews></PrivateRouter>
+                element: <PrivateRouter><DetailsNews></DetailsNews></PrivateRouter>,
+                loader: ({params}) => fetch(`http://localhost:5000/news/${params.id}`)
             }
         ]
     }

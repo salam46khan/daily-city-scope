@@ -13,7 +13,8 @@ const NewsItem = ({item}) => {
         console.log(id);
         
         if(user){
-            navigate(`/news/${id}`)
+            // update news view here 
+            console.log('do somthing');
             return
         }else{
             Swal.fire({
@@ -37,7 +38,7 @@ const NewsItem = ({item}) => {
         <div className='flex items-center rounded my-3 gap-1 p-2 bg-[#00000016] shadow-md shadow-[#0004]'>
             <img className='h-16 rounded w-24' src={img} alt="" />
             <div>
-                <Link onClick={()=>handleDetails(_id)} className="hover:underline hover:text-blue-500 font-newsTitle">{newsTitle}</Link>
+                <Link to={`/news/${_id}`} onClick={()=>handleDetails(_id)} className="hover:underline hover:text-blue-500 font-newsTitle">{newsTitle}</Link>
             </div>
             
         </div>

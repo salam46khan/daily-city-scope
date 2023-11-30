@@ -6,11 +6,11 @@ import Politice from '../../Shared/Politice';
 import Sports from '../../Shared/Sports';
 import ad from '../../assets/job circular.gif'
 import reportAd from '../../assets/ad-report.gif'
-import useNews from '../../hook/useNews';
+// import useNews from '../../hook/useNews';
 import LatastNews from './LatastNews';
 const NewsSection = () => {
-    const [news] = useNews()
-    console.log(news);
+    // const [news] = useNews()
+    // console.log(news);
     return (
         <div>
             <div className="container mx-auto flex flex-col md:flex-row items-start gap-5 p-3">
