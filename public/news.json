@@ -1,6 +1,5 @@
 [
     {
-      "_id": "1",
       "title": "Lorem Ipsum News",
       "img": "https://placekitten.com/800/400",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod urna vel risus cursus, nec laoreet elit fermentum.",
@@ -10,7 +9,6 @@
       "location": "New York, USA"
     },
     {
-      "_id": "2",
       "title": "Dolor Sit Amet Update",
       "img": "https://placekitten.com/800/401",
       "description": "Duis ac nisl a neque faucibus aliquet. Proin a arcu eget ligula fringilla dignissim eu at nisi.",
@@ -20,7 +18,6 @@
       "location": "London, UK"
     },
     {
-      "_id": "3",
       "title": "Consectetur Adipiscing Announcement",
       "img": "https://placekitten.com/800/402",
       "description": "Suspendisse potenti. Fusce vel mauris at leo tempor accumsan. Sed non leo nec eros rhoncus ultrices.",
@@ -30,7 +27,6 @@
       "location": "Tokyo, Japan"
     },
     {
-      "_id": "4",
       "title": "Dolor Sit Amet Update aall",
       "img": "https://placekitten.com/800/401",
       "description": "Duis ac nisl a neque faucibus aliquet. Proin a arcu eget ligula fringilla dignissim eu at nisi.",
@@ -40,7 +36,6 @@
       "location": "London, UK"
     },
     {
-      "_id": "5",
       "title": "Consectetur Adipiscing an Announcement",
       "img": "https://placekitten.com/800/402",
       "description": "Suspendisse potenti. Fusce vel mauris at leo tempor accumsan. Sed non leo nec eros rhoncus ultrices.",
@@ -50,7 +45,6 @@
       "location": "Tokyo, Japan"
     },
     {
-      "_id": "6",
       "title": "Lorem Ipsum News o",
       "img": "https://placekitten.com/800/400",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod urna vel risus cursus, nec laoreet elit fermentum.",
@@ -60,7 +54,6 @@
       "location": "New York, USA"
     },
     {
-      "_id": "7",
       "title": "Lorem Ipsum News",
       "img": "https://placekitten.com/800/400",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod urna vel risus cursus, nec laoreet elit fermentum.",

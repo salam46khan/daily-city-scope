@@ -4,7 +4,7 @@ import { useEffect } from "react"
 const useNews = ()=>{
     const [news, setNews] = useState([])
     useEffect(()=>{
-        fetch('news.json')
+        fetch('http://localhost:5000/news')
         .then(res => res.json())
         .then(data => {
             setNews(data)

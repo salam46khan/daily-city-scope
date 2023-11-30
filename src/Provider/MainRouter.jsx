@@ -5,6 +5,8 @@ import AddArticle from "../pages/AddArticle/AddArticle";
 import LogIn from "../pages/LogIn/LogIn";
 import SignUp from "../pages/LogIn/SignUp";
 import Profile from "../pages/Profile/Profile";
+import DetailsNews from "../Shared/DetailsNews";
+import PrivateRouter from "./PrivateRouter";
 
 const MainRouter = createBrowserRouter([
     {
@@ -17,7 +19,7 @@ const MainRouter = createBrowserRouter([
             },
             {
                 path: '/add-article',
-                element: <AddArticle></AddArticle>
+                element: <PrivateRouter><AddArticle></AddArticle></PrivateRouter>
             },
             {
                 path: '/login',
@@ -30,6 +32,10 @@ const MainRouter = createBrowserRouter([
             {
                 path: '/profile',
                 element: <Profile></Profile>
+            },
+            {
+                path: '/news/:id',
+                element: <PrivateRouter><DetailsNews></DetailsNews></PrivateRouter>
             }
         ]
     }

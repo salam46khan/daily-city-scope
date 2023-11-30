@@ -1,21 +1,16 @@
 import NewsItem from "../Components/NewsItem";
 import useNews from "../hook/useNews";
 
-const NewsSideBar = () => {
+const Economy = () => {
     const [news] = useNews()
-    const a = news.slice(0, 5)
-    console.log(news);
-    
     return (
         <div>
-            
-
             <div className="divider divider-start">
-                <h2 className="font-newsTitle text-2xl">Sports</h2>
+                <h2 className="font-newsTitle text-2xl">Economy</h2>
             </div>
             <div className="">
             {
-                a.map(item => <NewsItem 
+                news.slice(0,5).map(item => <NewsItem 
                     key={item._id}
                     item={item}
                 ></NewsItem>)
@@ -25,4 +20,4 @@ const NewsSideBar = () => {
     );
 };
 
-export default NewsSideBar;
+export default Economy;

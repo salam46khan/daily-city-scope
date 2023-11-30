@@ -30,15 +30,19 @@ const SignUp = () => {
         const user = { name, email, password }
         console.log(user);
         if (!/[$#@%&*]/.test(password)) {
-            setError('Password should be a spacial character')
+            setError('do not have a special character')
             return
         }
         if (password.length < 6) {
-            setError('Password should be six character')
+            setError('is less than 6 characters')
             return
         }
         if (!/[A-Z]/.test(password)) {
-            setError('Password should be one upper case letter')
+            setError('do not have a capital letter')
+            return
+        }
+        if (!/[0-9]/.test(password)) {
+            setError('do not have a numeric characte')
             return
         }
 
