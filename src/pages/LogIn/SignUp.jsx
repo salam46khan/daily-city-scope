@@ -4,7 +4,7 @@ import { AuthContext } from "../Providers/AuthProvider";
 import { updateProfile } from "firebase/auth";
 import GoogleLogin from "../../Shared/GoogleLogin";
 // import axios from 'axios';
-// import useAxiosPublic from "../../hook/useAxiosPublic";
+import useAxiosPublic from "../../hook/useAxiosPublic";
 
 // const imgHostingKey = import.meta.env.VITE_imgHostingKey;
 // const imgHostingAPI = `https://api.imgbb.com/1/upload?key=${imgHostingKey}`
@@ -14,7 +14,7 @@ const SignUp = () => {
     const [error, setError] = useState('');
     const navigate = useNavigate()
     const location = useLocation()
-    // const axiosPublic = useAxiosPublic()
+    const axiosPublic = useAxiosPublic()
     const { createUser } = useContext(AuthContext)
 
     console.log(createUser);
@@ -52,6 +52,13 @@ const SignUp = () => {
                 updateProfile(result.user, {
                     displayName: name,
                     // photoURL: imgURL
+                })
+                const userInfo = {
+                    name, email
+                }
+                axiosPublic.post('/users', userInfo)
+                .then(res => {
+                    console.log(res.data);
                 })
                 navigate(location.state ? location.state : '/')
             })

@@ -1,15 +1,102 @@
-
+import Toggle from 'react-toggle';
+import ad1 from '../../assets/ad-report.gif'
+import ad2 from '../../assets/job circular.gif'
+import { useContext } from 'react';
+import { AuthContext } from '../Providers/AuthProvider';
+// var Toggle = require('react-toggle')
 const AddArticle = () => {
+    const date = new Date()
+    const {user} = useContext(AuthContext)
+    const author = user.displayName;
+    const handlePublish = event => {
+        event.preventDefault()
+        const form = event.target;
+        const title = form.title.value;
+        const location = form.location.value;
+        const category = form.category.value;
+        const description = form.description.value;
+        const isPrimium = form.primium.checked
+        const publishItem = { title, location, category, description, isPrimium, date, author}
+        console.log(publishItem);
+
+        // todo: send to the server 
+    }
     return (
-        <div className="container mx-auto">
-            <p className="text-4xl">add article page</p>
-            <br />
-            <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit tempore ea enim corrupti optio atque harum dignissimos ratione quaerat veniam accusamus neque vitae culpa nam repellendus earum ab a rerum provident, impedit dolorem iste quo. Cumque nemo delectus dignissimos porro numquam eveniet sed officia fugiat id blanditiis fugit odit quos modi tempore ullam ipsam fuga, minus suscipit beatae nam dolores nobis, odio saepe? Dignissimos, deleniti! Excepturi tempore quasi laborum, sint rem molestias impedit dolore reiciendis, saepe a modi perspiciatis. Itaque animi nobis veritatis optio rem quasi vero perferendis iure, et, eaque ex tempora in ea iste excepturi dolore. Consequuntur est assumenda saepe esse corporis recusandae, earum veritatis quam sapiente minus aut. Odio harum qui nesciunt, suscipit animi similique eaque laboriosam molestiae hic eius eveniet esse, fugiat aspernatur enim consequuntur, saepe quasi. Eaque distinctio enim possimus tempora reiciendis repellendus porro? Assumenda veniam doloribus consequatur numquam qui. Quos unde praesentium rerum aperiam repellendus, doloremque officia corrupti recusandae laboriosam possimus. Laudantium quisquam voluptatem consequatur tempore asperiores quam ducimus, ex nihil eligendi quis nulla itaque hic dolores provident iste vero ipsum ipsa alias cupiditate nam, eos perferendis minus sed fugit. Fugit natus non earum temporibus impedit quidem officiis, ut, nemo excepturi reiciendis, fuga quod repellendus iure saepe perferendis maxime hic? Earum necessitatibus pariatur iusto commodi autem a nisi eveniet aliquam maxime voluptate facilis omnis labore cupiditate sed obcaecati alias sunt, doloremque illum natus laudantium vitae porro dicta rem. Repellat hic possimus maiores doloremque. Non sequi facilis odio illum optio sit, explicabo consectetur deserunt iusto quam consequuntur. At ut quas maiores tempora exercitationem illo corrupti nulla sit aliquam laboriosam quos voluptate sunt fuga totam aperiam ipsam, nesciunt ex magnam minus voluptas, enim blanditiis molestias deserunt reiciendis? Nihil illum magnam rem adipisci explicabo eum numquam consequatur veritatis eveniet debitis laboriosam dolorem rerum natus quae, unde voluptatum possimus sint repudiandae incidunt! Vitae dolor rerum aliquam aliquid eveniet accusantium esse cupiditate atque omnis repellat numquam vel, eligendi labore praesentium facere voluptatum dignissimos nisi inventore ut voluptatibus adipisci recusandae. Reiciendis nihil blanditiis tempore quibusdam cumque. Optio laudantium similique reiciendis molestiae atque placeat laboriosam eaque facilis sit id quo omnis nesciunt, deserunt fugit hic non tenetur nulla sint eius sequi provident et. Dignissimos, veniam explicabo nobis, sapiente a consequuntur, tempora accusantium earum voluptas provident inventore dicta nam? Voluptatibus consequuntur dolorum quibusdam at, eaque explicabo aliquam reiciendis fuga adipisci ut asperiores, maiores, porro illo eum culpa! Et corrupti dolor impedit ad harum tenetur nemo nobis officiis laboriosam, possimus eaque exercitationem fugiat alias maxime repudiandae unde neque distinctio architecto odio reiciendis aperiam at doloremque quas molestias? Facilis eveniet sequi, voluptatum quia dolorem totam suscipit excepturi sed eaque quae, unde qui? Alias, recusandae ipsum magnam saepe labore ab reiciendis itaque corporis, nostrum vel, maiores non blanditiis veritatis? Quos iste unde voluptate nesciunt, at cupiditate consequatur beatae aut sit. Fugit qui molestiae distinctio, in corporis magnam asperiores esse autem? Nisi cumque rerum doloribus amet inventore quasi repellat asperiores? Consequuntur ea maxime dicta ipsa inventore, dolorum ab totam repellat impedit alias animi sed natus placeat.
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus voluptatum suscipit earum laudantium quia nesciunt voluptatibus debitis? Vitae velit, ipsum vel est incidunt a. Fugit aliquam at quia labore deleniti itaque alias nihil repellendus explicabo blanditiis reiciendis, dolor eligendi doloribus? Ipsum vitae consectetur provident dolores officiis, nihil exercitationem alias, id incidunt qui, iusto laboriosam dolorem sunt ducimus et corporis mollitia numquam aut ad quisquam rerum aspernatur aliquam. Nam reprehenderit, eius, aliquam eligendi nihil enim, aperiam minima atque at eum beatae distinctio consequuntur nulla officia eveniet impedit obcaecati? Enim illum, tempore voluptates praesentium consequatur culpa iusto sint nostrum repellat animi dolore sapiente minus nemo totam repellendus maiores distinctio at hic cupiditate nihil soluta minima non provident deserunt? Ducimus exercitationem, perferendis assumenda laboriosam odit voluptatibus voluptates enim. Nemo, perferendis. Aut commodi neque magni libero ab, deleniti amet molestiae esse perspiciatis. Distinctio ab perspiciatis, sit veritatis cumque quod sapiente minus eius expedita obcaecati sunt harum repellat, necessitatibus autem est at, suscipit ipsam! Error cupiditate repellat eligendi, quidem reprehenderit ipsa repudiandae modi ducimus veniam autem itaque magni illum eaque rem nemo hic. Veniam reprehenderit dolores sapiente eligendi veritatis dignissimos ratione nesciunt, cum, laborum eum voluptate repellendus ipsum quis aliquid, quia aut tenetur blanditiis dolorum!
-            </p>
+        <div className="container mx-auto flex flex-col py-10 md:flex-row">
+            <div className="flex-1 bg-base-200 p-4">
+                <h2 className='text-center text-3xl font-newsTitle'>Publishe Your Report</h2>
+                <div className='bg-base-100 mt-4 '>
+                    {/* ------------------- */}
+
+                    <form onSubmit={handlePublish} className='card-body'>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Title</span>
+                            </label>
+                            <input name='title' type="text" placeholder="title" className="input input-bordered" required />
+                        </div>
+                        <div className='grid grid-cols-1 md:gap-4 md:grid-cols-2'>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Location</span>
+                                </label>
+                                <input name='location' type="text" placeholder="location" className="input input-bordered" required />
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Choose Category</span>
+                                </label>
+                                <select className="h-full p-3 rounded-md" name="category">
+                                    <option value="Sports">Sports</option>
+
+                                    <option value="Politice">Politice</option>
+
+                                    <option value="World">World</option>
+                                    <option value="Economy">Economy</option>
+                                    <option value="Entertentment">Entertentment</option>
+                                    <option value='Education'>Education</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Description</span>
+                                </label>
+                                <textarea name='description' type="text" placeholder="description" className="textarea textarea-bordered" required />
+                            </div>
+                        </div>
+                        <div className='grid grid-cols-2 gap-4'>
+                            <div className='form-control border'>
+
+                                <input type="file" className="file-input file-input-bordered w-full h-full" name='photo' />
+                            </div>
+                            <div className='border p-1 rounded'>
+                                <div className="form-control">
+                                    <label className="label cursor-pointer">
+                                        <span className="label-text">Is Primium:</span>
+                                        <input name='primium' type="checkbox" className="toggle" />
+
+                                    
+                                    </label>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <div className='text-center'>
+                            <input className='text-center btn btn-primary' type="submit" value="Post" />
+                        </div>
+                    </form>
+
+
+                    {/* ---------------------- */}
+                </div>
+            </div>
+            <div className="max-w-[280px] bg-base-200 hidden md:block">
+                {/* <img className='mb-5' src={ad1} alt="" /> */}
+                <img className='w-full' src={ad2} alt="" />
+            </div>
         </div>
     );
 };

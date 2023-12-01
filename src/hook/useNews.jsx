@@ -3,7 +3,7 @@
 import useAxiosPublic from "./useAxiosPublic"
 import { useQuery } from "@tanstack/react-query"
 
-const useNews = ()=>{
+const useNews = () => {
     // const [news, setNews] = useState([])
     const axiosPublic = useAxiosPublic()
     // useEffect(()=>{
@@ -20,14 +20,14 @@ const useNews = ()=>{
     //     // console.log(res.data);
     //     setNews(res.data)
     // })
-    
+
     // return [news]
 
 
 
-    const {refetch ,data: news = []} = useQuery({
+    const { refetch, data: news = [] } = useQuery({
         queryKey: ['news'],
-        queryFn: async () =>{
+        queryFn: async () => {
             const res = await axiosPublic.get(`/news`)
             return res.data
         }

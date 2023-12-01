@@ -33,7 +33,7 @@ const MainRouter = createBrowserRouter([
             },
             {
                 path: '/profile',
-                element: <Profile></Profile>
+                element: <PrivateRouter><Profile></Profile></PrivateRouter>
             },
             {
                 path: '/news/:id',
