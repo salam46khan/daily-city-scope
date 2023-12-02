@@ -3,7 +3,7 @@ import useNews from "../../hook/useNews";
 
 const LatastNews = () => {
     const [news] = useNews()
-    const latest = news.slice(0,6);
+    const latest = news.slice(0,8);
     return (
         <div className="py-5">
             <div className="divider divider-start">
@@ -11,7 +11,7 @@ const LatastNews = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 {
-                    news.map(item => <TopNewsItem key={item._id} item={item}></TopNewsItem>)
+                    latest.map(item => <TopNewsItem key={item._id} item={item}></TopNewsItem>)
                 }
             </div>
         </div>

@@ -3,6 +3,7 @@ import useNews from "../hook/useNews";
 
 const Sports = () => {
     const [news] = useNews()
+    const sports = news.filter(item => item.category === "Sports");
     return (
         <div>
             <div className="divider divider-start">
@@ -10,7 +11,7 @@ const Sports = () => {
             </div>
             <div className="">
             {
-                news.slice(0,5).map(item => <NewsItem 
+                sports.slice(0,5).map(item => <NewsItem 
                     key={item._id}
                     item={item}
                 ></NewsItem>)

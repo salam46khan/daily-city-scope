@@ -13,7 +13,7 @@ const Navbar = () => {
     const { user, logOut } = useContext(AuthContext)
     const [identity] = useIdentity()
     const users = identity[0]
-    console.log(users);
+    // console.log(users);
 
     useEffect(() => {
         const handleScroll = () => {

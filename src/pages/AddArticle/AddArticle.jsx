@@ -81,7 +81,7 @@ const AddArticle = () => {
 
                                     <option value="Politice">Politice</option>
 
-                                    <option value="World">World</option>
+                                    <option value="Wrold">Wrold</option>
                                     <option value="Economy">Economy</option>
                                     <option value="Entertentment">Entertentment</option>
                                     <option value='Education'>Education</option>

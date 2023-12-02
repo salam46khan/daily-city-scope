@@ -12,26 +12,7 @@ const NewsItem = ({item}) => {
     const handleDetails = id =>{
         console.log(id);
         
-        if(user){
-            // update news view here 
-            console.log('do somthing');
-            return
-        }else{
-            Swal.fire({
-                title: "You are not user!",
-                text: "You can't visit details page",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Do you want to be a User!"
-              }).then((result) => {
-                if (result.isConfirmed) {
-                  navigate('/login')
-                }
-              });
-        }
-
+      
         
     }
     return (

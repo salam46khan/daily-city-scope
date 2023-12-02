@@ -3,7 +3,7 @@ import useNews from "../hook/useNews";
 import { Link } from "react-router-dom";
 const Marque = () => {
     const [news] = useNews()
-    const latest = news.slice(0,6);
+    const latest = news.slice(0,10);
     return (
         <div className="bg-red-600 p-3">
             <div className="container mx-auto text-white">

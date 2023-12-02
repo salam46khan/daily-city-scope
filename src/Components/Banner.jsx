@@ -19,7 +19,7 @@ const Banner = () => {
     const handleDetails = id =>{
         console.log(id);
         // to={`news/${item._id}`}
-        navigate(`/news/${id}`)
+        
     }
     return (
         <div className="container mx-auto bg-base-200 relative -z-10">
@@ -41,7 +41,7 @@ const Banner = () => {
                                     <img className="w-full h-[220px] md:h-[300px] lg:h-[450px] object-cover -z-10" src={item.img} alt="" />
                                     <div className='absolute left-0 bottom-0 h-[40%]   bg-gradient-to-t from-[#000e] to-[#fff0] w-full'>
                                         <div className='p-3 h-full cursor-pointer z-30 flex items-center '>
-                                            <Link onClick={()=>handleDetails(item._id)}  className='hover:text-blue-400 text-white hover:underline cursor-pointer font-bold z-10 text-2xl md:text-3xl font-newsTitle'>{item.title}</Link>
+                                            <Link to={`/news/${item._id}`} onClick={()=>handleDetails(item._id)}  className='hover:text-blue-400 text-white hover:underline cursor-pointer font-bold z-10 text-2xl md:text-3xl font-newsTitle mt-10'>{item.title.length>70 ? item.title.slice(0,70) + '...': item.title}</Link>
 
                                         </div>
 

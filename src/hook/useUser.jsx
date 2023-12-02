@@ -4,7 +4,6 @@ import useAxiosSecure from "./useAxiosSecure";
 const useUser = () => {
     const axiosSecure = useAxiosSecure()
 
-
     const { refetch, data: users = [] } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
