@@ -9,6 +9,7 @@ import DetailsNews from "../Shared/DetailsNews";
 import PrivateRouter from "./PrivateRouter";
 import ErrorPage from "../pages/ErrorPage";
 import AllArticle from "../pages/AllArticle/AllArticle";
+import Premium from "../pages/Premium/Premium";
 
 const MainRouter = createBrowserRouter([
     {
@@ -44,6 +45,10 @@ const MainRouter = createBrowserRouter([
                 path: '/news/:id',
                 element: <PrivateRouter><DetailsNews></DetailsNews></PrivateRouter>,
                 loader: ({params}) => fetch(`http://localhost:5000/news/${params.id}`)
+            },
+            {
+                path: '/premium',
+                element: <PrivateRouter><Premium></Premium></PrivateRouter>
             }
         ]
     }

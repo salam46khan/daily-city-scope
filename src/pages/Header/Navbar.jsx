@@ -46,7 +46,8 @@ const Navbar = () => {
         <li><NavLink to={'/all-article'}>All News</NavLink></li>
         {
             user? <>
-                <li><NavLink to={'/add-article'}>Post News</NavLink></li>
+                <li><NavLink to={'/add-article'}>Post</NavLink></li>
+                <li><NavLink to={'/premium'}>Premium News</NavLink></li>
             </>
             : ''
         }
