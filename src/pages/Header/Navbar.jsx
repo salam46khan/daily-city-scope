@@ -4,13 +4,16 @@ import { Link, NavLink } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../Providers/AuthProvider';
 import { FaSignOutAlt, FaUser, FaUserCheck } from 'react-icons/fa'
+import useIdentity from '../../hook/useIdentity';
 
 
 
 const Navbar = () => {
     const [scroll, setScroll] = useState(false)
     const { user, logOut } = useContext(AuthContext)
-
+    const [identity] = useIdentity()
+    const users = identity[0]
+    console.log(users);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -40,7 +43,14 @@ const Navbar = () => {
 
     const navlinks = <>
         <li><NavLink to={'/'}>Home</NavLink></li>
-        <li><NavLink to={'/add-article'}>Services</NavLink></li>
+        <li><NavLink to={'/all-article'}>All News</NavLink></li>
+        {
+            user? <>
+                <li><NavLink to={'/add-article'}>Post News</NavLink></li>
+            </>
+            : ''
+        }
+        
 
     </>
     return (
@@ -81,8 +91,10 @@ const Navbar = () => {
                                 user ? <>
                                 <Link className='flex mr-2 tooltip tooltip-bottom items-center' data-tip={user.displayName} to={'/profile'}>
                                     <button className='btn btn-circle overflow-hidden text-green-500 text-3xl'>
+                                        
+                                        
                                         {
-                                            user.photoURL? <img className='h-full w-full' src={user?.photoURL} alt="" /> : <FaUserCheck></FaUserCheck>
+                                            users?.photoURL ? <img src={users?.photoURL} alt="" /> : user?.photoURL ? <img src={user.photoURL} alt="" /> : <FaUserCheck></FaUserCheck>
                                         }
                                         
                                         

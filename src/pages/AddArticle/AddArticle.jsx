@@ -1,25 +1,55 @@
-import Toggle from 'react-toggle';
-import ad1 from '../../assets/ad-report.gif'
 import ad2 from '../../assets/job circular.gif'
 import { useContext } from 'react';
 import { AuthContext } from '../Providers/AuthProvider';
+import useAxiosSecure from '../../hook/useAxiosSecure';
+import useAxiosPublic from '../../hook/useAxiosPublic';
+import { useState } from 'react';
 // var Toggle = require('react-toggle')
+
+const imgHostingKey = import.meta.env.VITE_imgHostingKey;
+const imgHostingAPI = `https://api.imgbb.com/1/upload?key=${imgHostingKey}`
+console.log(imgHostingAPI);
 const AddArticle = () => {
     const date = new Date()
     const {user} = useContext(AuthContext)
     const author = user.displayName;
-    const handlePublish = event => {
+    const axiosSecure = useAxiosSecure()
+    const axiosPublic = useAxiosPublic()
+    // const img = 'https://i.ibb.co/68m2PpL/3-removebg-preview.png';
+// -----------------explore
+    const [uploadImg, setUploadImg] = useState('')
+    const handleImageChange = async (event) =>{
+        const imgPath = event.target.files[0]
+        console.log(imgPath);
+
+        const formData = new FormData();
+        formData.append('image', imgPath);
+
+        const res = await axiosPublic.post(imgHostingAPI, formData)
+        const imgUrl = res.data.data.url;
+        console.log(imgUrl);
+        setUploadImg(imgUrl)
+    }
+// -------------
+    const handlePublish = async (event) => {
         event.preventDefault()
         const form = event.target;
         const title = form.title.value;
         const location = form.location.value;
         const category = form.category.value;
         const description = form.description.value;
-        const isPrimium = form.primium.checked
-        const publishItem = { title, location, category, description, isPrimium, date, author}
+        const isPrimium = form.primium.checked;
+        const img = uploadImg;
+        
+
+        const publishItem = { title, location, category, description, isPrimium, date, author, img}
         console.log(publishItem);
 
         // todo: send to the server 
+        axiosSecure.post('/news', publishItem)
+            .then(res =>{
+                console.log(res.data);
+            })
     }
     return (
         <div className="container mx-auto flex flex-col py-10 md:flex-row">
@@ -69,7 +99,7 @@ const AddArticle = () => {
                         <div className='grid grid-cols-2 gap-4'>
                             <div className='form-control border'>
 
-                                <input type="file" className="file-input file-input-bordered w-full h-full" name='photo' />
+                                <input type="file" className="file-input file-input-bordered w-full h-full" name='photo' onChange={handleImageChange} />
                             </div>
                             <div className='border p-1 rounded'>
                                 <div className="form-control">

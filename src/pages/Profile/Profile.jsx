@@ -1,9 +1,12 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 
 import { FaUserAlt } from "react-icons/fa";
 import useIdentity from "../../hook/useIdentity";
 import useAxiosSecure from "../../hook/useAxiosSecure";
+import useAxiosPublic from "../../hook/useAxiosPublic";
+const imgHostingKey = import.meta.env.VITE_imgHostingKey;
+const imgHostingAPI = `https://api.imgbb.com/1/upload?key=${imgHostingKey}`
 
 const Profile = () => {
     const { user } = useContext(AuthContext)
@@ -11,6 +14,21 @@ const Profile = () => {
     const profile = identity[0]
     // console.log(identity);
     const axiosSecure = useAxiosSecure()
+    const axiosPublic = useAxiosPublic()
+
+    const [uploadImg, setUploadImg] = useState('')
+    const handleImageChange = async (event) =>{
+        const imgPath = event.target.files[0]
+        console.log(imgPath);
+
+        const formData = new FormData();
+        formData.append('image', imgPath);
+
+        const res = await axiosPublic.post(imgHostingAPI, formData)
+        const imgUrl = res.data.data.url;
+        console.log(imgUrl);
+        setUploadImg(imgUrl)
+    }
 
     const handleProfileUpdate = event =>{
         event.preventDefault()
@@ -19,12 +37,12 @@ const Profile = () => {
         const bath = from.bath.value;
         const address = from.address.value;
         const gender = from.gender.value;
+        const photoURL = uploadImg
 
-
-        const profileUpdate = {phone, bath, address, gender}
+        const profileUpdate = {phone, bath, address, gender, photoURL}
         console.log(profileUpdate);
 
-        axiosSecure.put(`/users/${identity[0]._id}`, profileUpdate)
+        axiosSecure.put(`/users/${profile._id}`, profileUpdate)
         .then(res => {
             console.log(res.data);
             refetch()
@@ -38,7 +56,7 @@ const Profile = () => {
                 <div className="min-w-[260px] p-3 py-10 bg-base-300">
                     <div className=" text-center">
                         {
-                            identity[0]?.photoURL ? <img className="h-28 w-28 rounded-full mx-auto mb-4" src={identity[0]?.photoURL} alt="" /> : <div>
+                            profile?.photoURL ? <img className="h-28 w-28 rounded-full mx-auto mb-4" src={profile?.photoURL} alt="" /> : <div>
                                 {
                                     user.photoURL ? <img className="h-28 w-28 rounded-full mx-auto mb-4" src={user?.photoURL} alt="" /> : <FaUserAlt className="mx-auto text-5xl"></FaUserAlt>
                                 }
@@ -93,7 +111,7 @@ const Profile = () => {
                                 <div>
                                     <div className='form-control h-full'>
 
-                                        <input type="file" className="file-input file-input-bordered w-full h-full" name='photo' />
+                                        <input type="file" className="file-input file-input-bordered w-full h-full" onChange={handleImageChange} />
                                     </div>
                                 </div>
                                 <div className="flex border bg-black rounded-lg overflow-hidden">

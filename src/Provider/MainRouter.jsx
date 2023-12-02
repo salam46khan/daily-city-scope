@@ -8,6 +8,7 @@ import Profile from "../pages/Profile/Profile";
 import DetailsNews from "../Shared/DetailsNews";
 import PrivateRouter from "./PrivateRouter";
 import ErrorPage from "../pages/ErrorPage";
+import AllArticle from "../pages/AllArticle/AllArticle";
 
 const MainRouter = createBrowserRouter([
     {
@@ -22,6 +23,10 @@ const MainRouter = createBrowserRouter([
             {
                 path: '/add-article',
                 element: <PrivateRouter><AddArticle></AddArticle></PrivateRouter>
+            },
+            {
+                path: '/all-article',
+                element: <AllArticle></AllArticle>
             },
             {
                 path: '/login',
