@@ -3,11 +3,14 @@ import { AuthContext } from "../Providers/AuthProvider";
 
 import { FaUserAlt } from "react-icons/fa";
 import useIdentity from "../../hook/useIdentity";
+import useAxiosSecure from "../../hook/useAxiosSecure";
 
 const Profile = () => {
     const { user } = useContext(AuthContext)
     const [identity, refetch] = useIdentity()
+    const profile = identity[0]
     // console.log(identity);
+    const axiosSecure = useAxiosSecure()
 
     const handleProfileUpdate = event =>{
         event.preventDefault()
@@ -17,8 +20,16 @@ const Profile = () => {
         const address = from.address.value;
         const gender = from.gender.value;
 
+
         const profileUpdate = {phone, bath, address, gender}
         console.log(profileUpdate);
+
+        axiosSecure.put(`/users/${identity[0]._id}`, profileUpdate)
+        .then(res => {
+            console.log(res.data);
+            refetch()
+        })
+
     }
 
     return (
@@ -29,22 +40,22 @@ const Profile = () => {
                         {
                             identity[0]?.photoURL ? <img className="h-28 w-28 rounded-full mx-auto mb-4" src={identity[0]?.photoURL} alt="" /> : <div>
                                 {
-                                    user.photoURL ? <img className="h-28 w-28 rounded-full mx-auto mb-4" src={user?.photoURL} alt="" /> : <FaUserAlt className="mx-auto"></FaUserAlt>
+                                    user.photoURL ? <img className="h-28 w-28 rounded-full mx-auto mb-4" src={user?.photoURL} alt="" /> : <FaUserAlt className="mx-auto text-5xl"></FaUserAlt>
                                 }
 
                             </div>
                         }
 
                         <h3 className="font-newsTitle text-2xl">{identity[0]?.name}</h3>
-                        <p className="inline-block bg-slate-500 py-2 px-8 text-white mt-1">Role</p>
+                        <p className="inline-block bg-slate-500 py-2 px-8 text-white mt-1">{profile?.role ? profile.role : 'User'}</p>
                     </div>
                     <div className="pt-4">
-                        <p>Email: {identity[0]?.email}</p>
-                        <p>Name: {identity[0]?.name}</p>
-                        <p>Phone: {identity[0]?.phone}</p>
-                        <p>Date of Bath: {identity[0]?.bath}</p>
-                        <p>Gender: {identity[0]?.gender}</p>
-                        <p>Address: {identity[0]?.address}</p>
+                        <p>Email: {profile?.email}</p>
+                        <p>Name: {profile?.name}</p>
+                        <p>Phone: {profile?.phone}</p>
+                        <p>Date of Bath: {profile?.bath}</p>
+                        <p>Gender: {profile?.gender}</p>
+                        <p>Address: {profile?.address}</p>
                     </div>
                 </div>
                 <div className="bg-base-200 flex-1 p-5">
@@ -61,14 +72,14 @@ const Profile = () => {
                                     <label className="label">
                                         <span className="label-text">Phone:</span>
                                     </label>
-                                    <input name='phone' type="text" placeholder="phone" className="input input-bordered" />
+                                    <input name='phone' type="text" placeholder="phone" className="input input-bordered" defaultValue={profile?.phone}/>
                                 </div>
                                 <div className="form-control">
                                     <div className='form-control'>
                                         <label className="label">
                                             <span className="label-text">Date of Bath:</span>
                                         </label>
-                                        <input type="date" className="file-input file-input-bordered p-3 w-full h-full" name='bath' />
+                                        <input type="date" className="file-input file-input-bordered p-3 w-full h-full" name='bath' defaultValue={profile?.bath} />
                                     </div>
                                 </div>
                             </div>
@@ -76,7 +87,7 @@ const Profile = () => {
                                 <label className="label">
                                     <span className="label-text">Address:</span>
                                 </label>
-                                <input name='address' type="text" placeholder="Address" className="input input-bordered" />
+                                <input name='address' type="text" placeholder="Address" className="input input-bordered" defaultValue={profile?.address}/>
                             </div>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-3">
                                 <div>
@@ -89,7 +100,7 @@ const Profile = () => {
                                     <label className="label ">
                                         <span className="label-text text-base-300 px-3 uppercase text-bold font-extralight">Gender:</span>
                                     </label>
-                                    <select className="h-full w-full p-3  " name="gender">
+                                    <select className="h-full w-full p-3 " name="gender">
                                         <option value="male">Male</option>
 
                                         <option value="female">Female</option>
