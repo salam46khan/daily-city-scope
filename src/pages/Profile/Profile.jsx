@@ -1,51 +1,50 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
-import useAxiosSecure from "../../hook/useAxiosSecure";
-// import axios from "axios";
+
 import { FaUserAlt } from "react-icons/fa";
-// import useIdentity from "../../hook/useIdentity";
+import useIdentity from "../../hook/useIdentity";
 
 const Profile = () => {
     const { user } = useContext(AuthContext)
-    // const[ identity ]= useIdentity()
+    const [identity, refetch] = useIdentity()
     // console.log(identity);
-    // const {email} = user
-    // console.log(user);
-    const [users, setUsers] = useState([])
-    const axiosSecure = useAxiosSecure()
-    const url = `/user?email=${user.email}`
-    useEffect(()=>{
-        axiosSecure.get(url)
-            .then(res => {
-                // console.log(res.data[0]);
-                setUsers(res.data[0])
-            })
-    },[axiosSecure, url])
-    
+
+    const handleProfileUpdate = event =>{
+        event.preventDefault()
+        const from = event.target;
+        const phone = from.phone.value;
+        const bath = from.bath.value;
+        const address = from.address.value;
+        const gender = from.gender.value;
+
+        const profileUpdate = {phone, bath, address, gender}
+        console.log(profileUpdate);
+    }
+
     return (
         <div>
             <div className="container mx-auto px-3 py-5 flex flex-col md:flex-row">
                 <div className="min-w-[260px] p-3 py-10 bg-base-300">
                     <div className=" text-center">
                         {
-                            users.photoURL ? <img className="h-28 w-28 rounded-full mx-auto mb-4" src={users?.photoURL} alt="" /> : <div>
+                            identity[0]?.photoURL ? <img className="h-28 w-28 rounded-full mx-auto mb-4" src={identity[0]?.photoURL} alt="" /> : <div>
                                 {
                                     user.photoURL ? <img className="h-28 w-28 rounded-full mx-auto mb-4" src={user?.photoURL} alt="" /> : <FaUserAlt className="mx-auto"></FaUserAlt>
                                 }
-                                
+
                             </div>
                         }
-                        
-                        <h3 className="font-newsTitle text-2xl">{users.name}</h3>
+
+                        <h3 className="font-newsTitle text-2xl">{identity[0]?.name}</h3>
                         <p className="inline-block bg-slate-500 py-2 px-8 text-white mt-1">Role</p>
                     </div>
                     <div className="pt-4">
-                        <p>Email: {users.email}</p>
-                        <p>Name: {users.name}</p>
-                        <p>Phone: </p>
-                        <p>Date of Bath: </p>
-                        <p>Gender: </p>
-                        <p>Address: </p>
+                        <p>Email: {identity[0]?.email}</p>
+                        <p>Name: {identity[0]?.name}</p>
+                        <p>Phone: {identity[0]?.phone}</p>
+                        <p>Date of Bath: {identity[0]?.bath}</p>
+                        <p>Gender: {identity[0]?.gender}</p>
+                        <p>Address: {identity[0]?.address}</p>
                     </div>
                 </div>
                 <div className="bg-base-200 flex-1 p-5">
@@ -56,9 +55,55 @@ const Profile = () => {
                         <div className="divider divider-start">
                             <h2 className="font-newsTitle text-2xl">Update Profile</h2>
                         </div>
-                        
-                        
-                        
+                        <form onSubmit={handleProfileUpdate} className='card-body'>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Phone:</span>
+                                    </label>
+                                    <input name='phone' type="text" placeholder="phone" className="input input-bordered" />
+                                </div>
+                                <div className="form-control">
+                                    <div className='form-control'>
+                                        <label className="label">
+                                            <span className="label-text">Date of Bath:</span>
+                                        </label>
+                                        <input type="date" className="file-input file-input-bordered p-3 w-full h-full" name='bath' />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Address:</span>
+                                </label>
+                                <input name='address' type="text" placeholder="Address" className="input input-bordered" />
+                            </div>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-3">
+                                <div>
+                                    <div className='form-control h-full'>
+
+                                        <input type="file" className="file-input file-input-bordered w-full h-full" name='photo' />
+                                    </div>
+                                </div>
+                                <div className="flex border bg-black rounded-lg overflow-hidden">
+                                    <label className="label ">
+                                        <span className="label-text text-base-300 px-3 uppercase text-bold font-extralight">Gender:</span>
+                                    </label>
+                                    <select className="h-full w-full p-3  " name="gender">
+                                        <option value="male">Male</option>
+
+                                        <option value="female">Female</option>
+
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div className="text-center mt-3">
+                            <input className="btn btn-primary" type="submit" value="Update" />
+                            </div>
+                        </form>
+
+
                     </div>
                 </div>
             </div>
