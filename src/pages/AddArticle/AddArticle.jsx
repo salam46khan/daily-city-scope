@@ -4,6 +4,7 @@ import { AuthContext } from '../Providers/AuthProvider';
 import useAxiosSecure from '../../hook/useAxiosSecure';
 import useAxiosPublic from '../../hook/useAxiosPublic';
 import { useState } from 'react';
+import Swal from 'sweetalert2'
 // var Toggle = require('react-toggle')
 
 const imgHostingKey = import.meta.env.VITE_imgHostingKey;
@@ -13,6 +14,7 @@ const AddArticle = () => {
     const date = new Date()
     const {user} = useContext(AuthContext)
     const author = user.displayName;
+    const authorEmail = user.email;
     const axiosSecure = useAxiosSecure()
     const axiosPublic = useAxiosPublic()
     // const img = 'https://i.ibb.co/68m2PpL/3-removebg-preview.png';
@@ -27,7 +29,7 @@ const AddArticle = () => {
 
         const res = await axiosPublic.post(imgHostingAPI, formData)
         const imgUrl = res.data.data.url;
-        console.log(imgUrl);
+        // console.log(imgUrl);
         setUploadImg(imgUrl)
     }
 // -------------
@@ -40,15 +42,27 @@ const AddArticle = () => {
         const description = form.description.value;
         const isPrimium = form.primium.checked;
         const img = uploadImg;
+
+        const status = 'pending'
         
 
-        const publishItem = { title, location, category, description, isPrimium, date, author, img}
+        const publishItem = { title, location, category, description, isPrimium, date, author, img, status, authorEmail}
         console.log(publishItem);
 
         // todo: send to the server 
         axiosSecure.post('/news', publishItem)
             .then(res =>{
                 console.log(res.data);
+                if(res.data.acknowledged){
+                    Swal.fire({
+                        
+                        icon: "success",
+                        title: "Your News Post successfuly",
+                        showConfirmButton: false,
+                        timer: 1500
+                      });
+                      form.reset()
+                }
             })
     }
     return (
@@ -99,7 +113,7 @@ const AddArticle = () => {
                         <div className='grid grid-cols-2 gap-4'>
                             <div className='form-control border'>
 
-                                <input type="file" className="file-input file-input-bordered w-full h-full" name='photo' onChange={handleImageChange} />
+                                <input type="file" className="file-input file-input-bordered w-full h-full" name='photo' onChange={handleImageChange} required/>
                             </div>
                             <div className='border p-1 rounded'>
                                 <div className="form-control">

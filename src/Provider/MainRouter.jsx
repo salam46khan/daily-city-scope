@@ -10,6 +10,12 @@ import PrivateRouter from "./PrivateRouter";
 import ErrorPage from "../pages/ErrorPage";
 import AllArticle from "../pages/AllArticle/AllArticle";
 import Premium from "../pages/Premium/Premium";
+import Dashboard from "../layout/Dashboard";
+import DashAllUser from "../pages/Dashboard/DashAllUser";
+import DashHome from "../pages/Dashboard/DashHome";
+import MyArticle from "../pages/MyArticle/MyArticle";
+import UploadMyArticle from "../pages/MyArticle/UploadMyArticle";
+
 
 const MainRouter = createBrowserRouter([
     {
@@ -44,11 +50,34 @@ const MainRouter = createBrowserRouter([
             {
                 path: '/news/:id',
                 element: <PrivateRouter><DetailsNews></DetailsNews></PrivateRouter>,
-                loader: ({params}) => fetch(`http://localhost:5000/news/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:5000/news/${params.id}`)
             },
             {
                 path: '/premium',
                 element: <PrivateRouter><Premium></Premium></PrivateRouter>
+            },
+            {
+                path: '/my-article',
+                element: <PrivateRouter><MyArticle></MyArticle></PrivateRouter>
+            },
+            {
+                path: '/my-article-upload/:id',
+                element: <PrivateRouter><UploadMyArticle></UploadMyArticle></PrivateRouter>,
+                loader: ({ params }) => fetch(`http://localhost:5000/news/${params.id}`)
+            }
+        ]
+    },
+    {
+        path: 'dashboard',
+        element: <Dashboard></Dashboard>,
+        children: [
+            {
+                path: 'home',
+                element: <DashHome></DashHome>
+            },
+            {
+                path: 'dash_all_user',
+                element: <DashAllUser></DashAllUser>
             }
         ]
     }
