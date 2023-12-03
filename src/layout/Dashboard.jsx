@@ -26,8 +26,11 @@ const Dashboard = () => {
                         <h3 className="text-2xl font-logoTitle p-3">Daily City Scope</h3>
                     <ul className="menu p-4 w-80 min-h-full  text-base-content">
                         {/* Sidebar content here */}
-                        <li><NavLink to={'/dashboard/home'}>Cart</NavLink></li>
+                        <li><NavLink to={'/dashboard/home'}>Admin Home</NavLink></li>
                         <li><NavLink to={'/dashboard/dash_all_user'}>All User</NavLink></li>
+                        <li><NavLink to={'/dashboard/dash_all_article'}>All Article</NavLink></li>
+                        <li><NavLink to={'/dashboard/dash_add_publisher'}>Add Publisher</NavLink></li>
+                        
                         <div className="divider">OR</div>
                         <li><NavLink to={'/'}>Home</NavLink></li>
 

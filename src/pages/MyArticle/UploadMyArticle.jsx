@@ -1,10 +1,12 @@
 import { useLoaderData } from "react-router-dom";
 import useAxiosSecure from "../../hook/useAxiosSecure";
 import Swal from 'sweetalert2'
+import useNews from "../../hook/useNews";
 
 const UploadMyArticle = () => {
     const newsData = useLoaderData();
     const axiosSecure = useAxiosSecure()
+    const [, refetch] = useNews()
     const { _id, title, category, location, description, isPrimium } = newsData;
     const handleUpdateNews = event => {
         event.preventDefault()
@@ -27,6 +29,7 @@ const UploadMyArticle = () => {
                     showConfirmButton: false,
                     timer: 1500
                   });
+                  refetch()
             }
         })
     }

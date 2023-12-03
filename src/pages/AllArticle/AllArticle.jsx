@@ -58,8 +58,8 @@ const AllArticle = () => {
                             </div>
                         </div>
                         <div>
-                            <select onChange={handleFilter} className="select max-w-min w-full border select-bordered">
-                                <option disabled selected>Filter Author Name</option>
+                            <select defaultValue='default' onChange={handleFilter} className="select max-w-min w-full border select-bordered">
+                                <option value='default' disabled selected>Filter Author Name</option>
                                 {
                                     users.map(userr => <option key={userr._id}>{userr.name}</option>)
                                 }

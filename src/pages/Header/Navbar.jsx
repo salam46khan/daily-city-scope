@@ -49,12 +49,12 @@ const Navbar = () => {
                 <li><NavLink to={'/add-article'}>Post</NavLink></li>
                 <li><NavLink to={'/my-article'}>My News</NavLink></li>
                 <li><NavLink to={'/premium'}>Premium News</NavLink></li>
-                <li><NavLink to={'/dashboard/home'}>Dashboard</NavLink></li>
+                {/* <li><NavLink to={'/dashboard/home'}>Dashboard</NavLink></li> */}
             </>
             : ''
         }
         {
-            
+            users?.role === 'admin' ? <li><NavLink to={'/dashboard/home'}>Dashboard</NavLink></li> : ''
         }
         
 

@@ -3,7 +3,7 @@ import useNews from "../hook/useNews";
 
 const Politice = () => {
     const [news] = useNews()
-    const politice = news.filter(item => item.category === "Science");
+    const politice = news.filter(item => item.category === "Politice");
     return (
         <div>
             <div className="divider divider-start">

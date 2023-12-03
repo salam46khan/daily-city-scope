@@ -15,6 +15,7 @@ import DashAllUser from "../pages/Dashboard/DashAllUser";
 import DashHome from "../pages/Dashboard/DashHome";
 import MyArticle from "../pages/MyArticle/MyArticle";
 import UploadMyArticle from "../pages/MyArticle/UploadMyArticle";
+import AdminRouter from "./AdminRouter";
 
 
 const MainRouter = createBrowserRouter([
@@ -73,7 +74,7 @@ const MainRouter = createBrowserRouter([
         children: [
             {
                 path: 'home',
-                element: <DashHome></DashHome>
+                element: <AdminRouter><DashHome></DashHome></AdminRouter>
             },
             {
                 path: 'dash_all_user',

@@ -5,6 +5,7 @@ import useAxiosSecure from '../../hook/useAxiosSecure';
 import useAxiosPublic from '../../hook/useAxiosPublic';
 import { useState } from 'react';
 import Swal from 'sweetalert2'
+import useNews from '../../hook/useNews';
 // var Toggle = require('react-toggle')
 
 const imgHostingKey = import.meta.env.VITE_imgHostingKey;
@@ -17,6 +18,7 @@ const AddArticle = () => {
     const authorEmail = user.email;
     const axiosSecure = useAxiosSecure()
     const axiosPublic = useAxiosPublic()
+    const [,refetch] = useNews()
     // const img = 'https://i.ibb.co/68m2PpL/3-removebg-preview.png';
 // -----------------explore
     const [uploadImg, setUploadImg] = useState('')
@@ -62,6 +64,7 @@ const AddArticle = () => {
                         timer: 1500
                       });
                       form.reset()
+                      refetch()
                 }
             })
     }
