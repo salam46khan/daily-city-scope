@@ -78,7 +78,7 @@ const MainRouter = createBrowserRouter([
             },
             {
                 path: 'dash_all_user',
-                element: <DashAllUser></DashAllUser>
+                element: <AdminRouter><DashAllUser></DashAllUser></AdminRouter>
             }
         ]
     }
