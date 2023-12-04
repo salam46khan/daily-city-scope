@@ -65,7 +65,7 @@ const Profile = () => {
                         }
 
                         <h3 className="font-newsTitle text-2xl">{identity[0]?.name}</h3>
-                        <p className="inline-block bg-slate-500 py-2 px-8 text-white mt-1">{profile?.role ? profile.role : 'User'}</p>
+                        <p className="inline-block bg-slate-500 py-2 px-8 text-white mt-1 uppercase">{profile?.role ? profile.role : 'User'}</p>
                     </div>
                     <div className="pt-4">
                         <p>Email: {profile?.email}</p>
