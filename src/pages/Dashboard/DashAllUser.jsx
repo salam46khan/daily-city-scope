@@ -5,7 +5,7 @@ const DashAllUser = () => {
   const [user] = useUser();
   return (
     <div>
-      <h2 className='text-3xl'>Dash All User</h2>
+      <h2 className='text-3xl'>All User</h2>
       <hr />
       <p className="text-xl">Total User: {user.length}</p>
       <div className="p-3">

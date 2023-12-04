@@ -16,7 +16,7 @@ const MyArticleItem = ({item, index}) => {
 
     const handleDelete = (id) =>{
         console.log(id);
-        axiosPublic.delete(`/mynews/${id}`)
+        axiosPublic.delete(`/allnews/${id}`)
         .then(res => {
             console.log(res.data);
             if(res.data.deletedCount>0){
