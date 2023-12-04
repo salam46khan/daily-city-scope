@@ -16,7 +16,7 @@ const Profile = () => {
     const axiosSecure = useAxiosSecure()
     const axiosPublic = useAxiosPublic()
 
-    const [uploadImg, setUploadImg] = useState('')
+    const [uploadImg, setUploadImg] = useState(profile.photoURL)
     const handleImageChange = async (event) =>{
         const imgPath = event.target.files[0]
         console.log(imgPath);
@@ -42,7 +42,7 @@ const Profile = () => {
         const profileUpdate = {phone, bath, address, gender, photoURL}
         console.log(profileUpdate);
 
-        axiosSecure.put(`/users/${profile._id}`, profileUpdate)
+        axiosSecure.patch(`/users/${profile._id}`, profileUpdate)
         .then(res => {
             console.log(res.data);
             refetch()

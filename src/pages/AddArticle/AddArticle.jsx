@@ -10,7 +10,7 @@ import useNews from '../../hook/useNews';
 
 const imgHostingKey = import.meta.env.VITE_imgHostingKey;
 const imgHostingAPI = `https://api.imgbb.com/1/upload?key=${imgHostingKey}`
-console.log(imgHostingAPI);
+// console.log(imgHostingAPI);
 const AddArticle = () => {
     const date = new Date()
     const {user} = useContext(AuthContext)

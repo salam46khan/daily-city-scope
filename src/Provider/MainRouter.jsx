@@ -16,6 +16,7 @@ import DashHome from "../pages/Dashboard/DashHome";
 import MyArticle from "../pages/MyArticle/MyArticle";
 import UploadMyArticle from "../pages/MyArticle/UploadMyArticle";
 import AdminRouter from "./AdminRouter";
+import DashAddPublisher from "../pages/Dashboard/DashAddPublisher";
 
 
 const MainRouter = createBrowserRouter([
@@ -79,6 +80,10 @@ const MainRouter = createBrowserRouter([
             {
                 path: 'dash_all_user',
                 element: <AdminRouter><DashAllUser></DashAllUser></AdminRouter>
+            },
+            {
+                path: 'dash_add_publisher',
+                element: <AdminRouter><DashAddPublisher></DashAddPublisher></AdminRouter>
             }
         ]
     }

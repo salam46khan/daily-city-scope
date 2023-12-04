@@ -3,9 +3,11 @@ import { BiUserCircle } from 'react-icons/bi';
 import { FaUser, FaUsersCog } from 'react-icons/fa';
 import useAxiosSecure from '../../../hook/useAxiosSecure';
 import Swal from 'sweetalert2'
+import useUser from '../../../hook/useUser';
 
 const AllUserItem = ({item}) => {
     const axiosSecure = useAxiosSecure()
+    const [,refetch] = useUser()
     // console.log(item);
     const {name, email, photoURL, role, _id} = item;
     const handleMakeAdmin = id =>{
@@ -20,6 +22,7 @@ const AllUserItem = ({item}) => {
                         showConfirmButton: false,
                         timer: 1500
                       });
+                      refetch()
                 }
             })
     }

@@ -66,7 +66,7 @@ const Statistic = () => {
                                 )}
                             </CountUp>
                         </div>
-                        <h3 className="uppercase text-slate-500">All User</h3>
+                        <h3 className="uppercase text-slate-500">Premium User</h3>
                     </div>
                 </div>
             </div>
