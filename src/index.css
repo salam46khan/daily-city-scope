@@ -10,4 +10,11 @@
 body{
     font-family: 'Times New Roman', Times, serif;
 }
-
+.publisherBg{
+   
+    background: linear-gradient(30deg, #0008, #00f7) ,url(./assets/read-news.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
