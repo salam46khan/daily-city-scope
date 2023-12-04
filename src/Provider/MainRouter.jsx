@@ -53,7 +53,7 @@ const MainRouter = createBrowserRouter([
             {
                 path: '/news/:id',
                 element: <PrivateRouter><DetailsNews></DetailsNews></PrivateRouter>,
-                loader: ({ params }) => fetch(`http://localhost:5000/news/${params.id}`)
+                loader: ({ params }) => fetch(`https://daily-city-scope-server.vercel.app/news/${params.id}`)
             },
             {
                 path: '/premium',
@@ -66,7 +66,7 @@ const MainRouter = createBrowserRouter([
             {
                 path: '/my-article-upload/:id',
                 element: <PrivateRouter><UploadMyArticle></UploadMyArticle></PrivateRouter>,
-                loader: ({ params }) => fetch(`http://localhost:5000/news/${params.id}`)
+                loader: ({ params }) => fetch(`https://daily-city-scope-server.vercel.app/news/${params.id}`)
             }
         ]
     },
