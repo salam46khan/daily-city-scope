@@ -1,8 +1,17 @@
-# React + Vite
+# Daily City Scope
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### live link : [Daily City Scope](https://daily-city-scope.web.app/)
+### Client side link : [Code](https://github.com/salam46khan/daily-city-scope)
+### Server side link : [Code](https://github.com/salam46khan/daily-city-scope-server)
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- User Authentication.
+- Easy to understand layout.
+- Responsive design.
+- User can post news
+- User can see his won news and he can delete or update
+- Admin can access dashboard where he see all user, all post news and he can add publisher
+- Admin can make admin from users
+- Admin can delete posted news
+- When admin approve news then news will be publish
